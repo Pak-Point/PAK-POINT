@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nk7741595-ux.github.io/PAK-POINT/sitemap.xml
