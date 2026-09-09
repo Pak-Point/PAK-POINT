@@ -1,4 +1,4 @@
-name: Pak Point Mobile Redesign
+name: Pak Point Professional Theme
 
 on:
   push:
@@ -9,80 +9,53 @@ permissions:
 
 jobs:
   redesign:
-    if: ${{ !contains(github.event.head_commit.message, 'Apply professional mobile redesign') }}
+    if: ${{ !contains(github.event.head_commit.message, 'Apply professional theme') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Apply responsive redesign
+      - name: Apply professional theme
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          p = Path('index.html')
-          s = p.read_text(encoding='utf-8')
-          css = r'''
-
-          /* Pak Point professional mobile redesign */
-          .menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:9px;font-size:25px;line-height:1;padding:7px 11px;cursor:pointer}
-          .breaking-bar{background:#fff;color:#075e54;border-bottom:1px solid #e7ecef;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
-          .breaking-inner{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;min-height:42px;padding:0 15px;font-size:14px;font-weight:600}
-          .breaking-label{background:#075e54;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap}
-          .breaking-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-          .hero{padding:42px 20px 48px}
-          .hero h1{font-size:38px;font-weight:800;letter-spacing:-.5px}
-          .search-box{max-width:760px;margin:22px auto 0;align-items:stretch}
-          .search-box input{box-shadow:0 4px 14px rgba(0,0,0,.10)}
-          .search-box button{background:#075e54;font-weight:700;min-width:120px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
-          .search-box button:hover{background:#064d46}
-          .card{border:1px solid #edf0f2;border-radius:14px}
-          .section-title{font-weight:800}
-
-          @media(max-width:700px){
-            header{padding:12px 15px}
-            .header-container{position:relative;min-height:48px}
-            .logo{font-size:24px}
-            .menu-toggle{display:block;margin-left:auto}
-            nav{display:none;position:absolute;top:58px;left:0;right:0;background:#075e54;padding:12px 10px 15px;border-radius:0 0 14px 14px;box-shadow:0 8px 18px rgba(0,0,0,.18);gap:5px;flex-direction:column;align-items:stretch}
-            nav.open{display:flex}
-            nav a{font-size:16px;padding:11px 14px;border-radius:8px;text-align:left}
-            nav a:hover{background:rgba(255,255,255,.12)}
-            .breaking-inner{min-height:40px;padding:0 10px;font-size:13px}
-            .breaking-label{font-size:12px;padding:4px 8px}
-            .hero{padding:34px 16px 38px}
-            .hero h1{font-size:31px}
-            .hero p{font-size:16px;line-height:1.55}
-            .search-box{display:flex;flex-direction:column;gap:9px;margin-top:20px}
-            .search-box input,.search-box button{width:100%;min-height:50px}
-            .search-box button{font-size:16px}
-            main{padding:24px 12px}
-            section{margin-bottom:32px}
-            .section-title{font-size:23px}
-            .posts{grid-template-columns:1fr;gap:14px}
-            .card-image{height:180px}
-          }
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          css=r'''
+          /* Pak Point Professional News Theme */
+          :root{--navy:#0b1f33;--navy2:#123b5d;--accent:#d6a84f;--bg:#f4f6f8;--text:#17212b;--muted:#66727e}
+          body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+          header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:13px 20px;box-shadow:0 3px 14px rgba(0,0,0,.16)}
+          .header-container{max-width:1200px}
+          .logo{font-size:28px;letter-spacing:.2px}
+          nav a{font-size:14px;font-weight:600;border-radius:7px;padding:8px 10px}
+          nav a:hover{background:rgba(214,168,79,.18);color:#fff}
+          .breaking-bar{background:#fff;color:var(--navy);border-bottom:2px solid var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+          .breaking-label{background:#b52b2b}
+          .hero{background:linear-gradient(135deg,#102f4b,#17627c 55%,#0f766e);padding:52px 20px 58px}
+          .hero h1{font-size:42px;font-weight:800}
+          .hero p{font-size:19px}
+          .search-box input{border:1px solid #dce2e7;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+          .search-box button{background:var(--accent);color:#102033;font-weight:800;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+          .search-box button:hover{background:#c79838}
+          main{max-width:1240px}
+          .section-title{color:var(--navy);border-left-color:var(--accent)}
+          .card{border:1px solid #e3e7eb;border-radius:12px;background:#fff;box-shadow:0 3px 12px rgba(11,31,51,.07)}
+          .card:hover{transform:translateY(-4px);box-shadow:0 9px 24px rgba(11,31,51,.13)}
+          .category{background:var(--navy);color:#fff}
+          .read-article{color:var(--navy)}
+          .contact-box{border-top:4px solid var(--accent)}
+          footer{background:var(--navy)!important;color:#fff}
+          @media(max-width:700px){header{padding:11px 14px}.logo{font-size:24px}.hero{padding:35px 16px 40px}.hero h1{font-size:31px}.hero p{font-size:16px}.search-box button{background:var(--accent);color:#102033}.section-title{font-size:23px}}
           '''
-          if 'Pak Point professional mobile redesign' not in s:
-              s = s.replace('</style>', css + '\n  </style>', 1)
-          if 'class="menu-toggle"' not in s:
-              s = s.replace('<nav>', '<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>\n      <nav>', 1)
-          if 'class="breaking-bar"' not in s:
-              ticker = '''\n  <div class="breaking-bar">\n    <div class="breaking-inner">\n      <span class="breaking-label">BREAKING</span>\n      <span class="breaking-text">Latest Pakistan &amp; World News — Stay updated with Pak Point</span>\n    </div>\n  </div>\n'''
-              s = s.replace('</header>', '</header>' + ticker, 1)
-          if 'Pak Point mobile menu script' not in s:
-              js = '''\n<script>\n/* Pak Point mobile menu script */\ndocument.addEventListener('DOMContentLoaded',function(){\n  const b=document.querySelector('.menu-toggle');\n  const n=document.querySelector('nav');\n  if(!b||!n)return;\n  b.addEventListener('click',function(){\n    const open=n.classList.toggle('open');\n    b.setAttribute('aria-expanded',open?'true':'false');\n    b.textContent=open?'✕':'☰';\n  });\n  n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='☰';}));\n});\n</script>\n'''
-              s = s.replace('</body>', js + '\n</body>', 1)
-          p.write_text(s, encoding='utf-8')
+          if 'Pak Point Professional News Theme' not in s:
+              s=s.replace('</style>',css+'\n</style>',1)
+          p.write_text(s,encoding='utf-8')
           PY
-
-      - name: Commit redesign
+      - name: Commit professional theme
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          if git diff --cached --quiet; then
-            echo "No changes needed"
-            exit 0
-          fi
-          git commit -m "Apply professional mobile redesign"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Apply professional theme"
           git push
