@@ -3,130 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Pak Point | Latest Pakistan & World News</title>
-
   <meta name="description" content="Pak Point brings you the latest Pakistan and world news, breaking news, technology, sports, business, education, motivation and knowledge.">
-
   <meta name="keywords" content="Pak Point, Pakistan News, Latest News, Breaking News, Pakistan, World News, Stories, Motivation, Knowledge">
-
   <meta name="author" content="Pak Point">
-
-  <link rel="canonical" href="https://pak-point.github.io/PAK-POINT/">
+  <link rel="canonical" href="https://pak-point.github.io/pak-point/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pak-point.github.io/PAK-POINT/">
+  <meta property="og:url" content="https://pak-point.github.io/pak-point/">
   <meta property="og:title" content="Pak Point | Latest Pakistan & World News">
   <meta property="og:description" content="Latest Pakistan and world news, articles, stories, motivation and useful knowledge.">
   <meta property="og:site_name" content="Pak Point">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Pak Point | Latest Pakistan & World News">
   <meta name="twitter:description" content="Latest Pakistan and world news, articles, stories, motivation and useful knowledge.">
-
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f4f6f8; color: #222; line-height: 1.6; }
-    header { background: #075e54; color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-    .header-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
-    .logo { font-size: 26px; font-weight: bold; white-space: nowrap; }
-    nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-    nav a { color: white; text-decoration: none; font-size: 14px; padding: 6px 8px; border-radius: 5px; }
-    nav a:hover { background: rgba(255,255,255,0.15); }
-    .hero { background: linear-gradient(135deg, #075e54, #128c7e); color: white; text-align: center; padding: 55px 20px; }
-    .hero h1 { font-size: 38px; margin-bottom: 10px; }
-    .hero p { font-size: 18px; max-width: 700px; margin: auto; }
-    .search-box { max-width: 700px; margin: 25px auto 0; display: flex; gap: 8px; }
-    .search-box input { flex: 1; padding: 13px; border: none; border-radius: 7px; font-size: 16px; outline: none; }
-    .search-box button { padding: 13px 20px; border: none; border-radius: 7px; background: #222; color: white; cursor: pointer; }
-    main { max-width: 1200px; margin: auto; padding: 30px 15px; }
-    section { margin-bottom: 45px; }
-    .section-title { font-size: 27px; margin-bottom: 18px; color: #075e54; border-left: 5px solid #075e54; padding-left: 10px; }
-    .posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.08); transition: 0.3s; cursor: pointer; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0,0,0,0.14); }
-    .card-image { width: 100%; height: 190px; object-fit: cover; background: #ddd; }
-    .read-article { display: inline-block; margin-top: 10px; text-decoration: none; font-weight: 700; }
-    .card-content { padding: 17px; }
-    .card h3 { font-size: 20px; margin-bottom: 8px; color: #222; }
-    .category { display: inline-block; background: #075e54; color: white; padding: 4px 9px; border-radius: 4px; font-size: 12px; margin-bottom: 8px; }
-    .date { color: #777; font-size: 13px; margin-top: 10px; }
-    .empty { background: white; padding: 25px; text-align: center; border-radius: 8px; color: #777; }
-    .contact-box { background: white; padding: 30px 20px; border-radius: 10px; text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.08); }
-    .contact-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
-    .contact-buttons a { text-decoration: none; color: white; padding: 11px 18px; border-radius: 6px; font-weight: bold; }
-    .whatsapp { background: #25d366; }
-    .email { background: #444; }
-    .facebook { background: #1877f2; }
-    footer { background: #075e54; color: white; text-align: center; padding: 25px 15px; margin-top: 30px; }
-    .admin-link { color: white; text-decoration: none; display: inline-block; margin-top: 8px; opacity: 0.9; }
-    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); overflow-y: auto; padding: 30px 15px; }
-    .modal-content { max-width: 800px; margin: auto; background: white; border-radius: 10px; padding: 25px; position: relative; }
-    .modal-content img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-    .modal-content h2 { margin-bottom: 10px; color: #075e54; }
-    .modal-text { white-space: pre-wrap; font-size: 17px; line-height: 1.8; }
-    .close { position: absolute; right: 15px; top: 8px; font-size: 32px; cursor: pointer; color: #555; }
-    .loading { text-align: center; padding: 40px; font-size: 18px; color: #075e54; }
-    @media (max-width: 768px) {
-      .header-container { flex-direction: column; }
-      nav { width: 100%; }
-      .hero h1 { font-size: 30px; }
-      .hero p { font-size: 16px; }
-      .search-box { flex-direction: column; }
-      .search-box button { width: 100%; }
-      .section-title { font-size: 24px; }
-    }
-    .ad-container{width:100%;min-height:90px;margin:20px 0;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;overflow:hidden}
-    .ad-label{color:#888;font-size:12px;text-align:center}
-    .info-page{background:#fff;padding:25px;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
-    .info-page h3{color:#075e54;margin-bottom:12px}.info-page p{margin-bottom:14px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;color:#17212b;line-height:1.6}
+    header{background:linear-gradient(135deg,#0b1f33,#123b5d);color:#fff;padding:13px 20px;position:sticky;top:0;z-index:1000;box-shadow:0 3px 14px rgba(0,0,0,.16)}
+    .header-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .logo{font-size:28px;font-weight:bold;white-space:nowrap;letter-spacing:.2px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:8px 10px;border-radius:7px}
+    nav a:hover{background:rgba(214,168,79,.18);color:#fff}
     .menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:9px;font-size:25px;line-height:1;padding:7px 11px;cursor:pointer}
-    .breaking-bar{background:#fff;color:#075e54;border-bottom:1px solid #e7ecef;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
+    .breaking-bar{background:#fff;color:#0b1f33;border-bottom:2px solid #d6a84f;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
     .breaking-inner{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;min-height:42px;padding:0 15px;font-size:14px;font-weight:600}
-    .breaking-label{background:#075e54;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap}
+    .breaking-label{background:#b52b2b;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap}
     .breaking-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .hero{padding:42px 20px 48px}.hero h1{font-size:38px;font-weight:800;letter-spacing:-.5px}.search-box{max-width:760px;margin:22px auto 0;align-items:stretch}.search-box input{box-shadow:0 4px 14px rgba(0,0,0,.10)}.search-box button{background:#075e54;font-weight:700;min-width:120px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.search-box button:hover{background:#064d46}.card{border:1px solid #edf0f2;border-radius:14px}.section-title{font-weight:800}
+    .hero{background:linear-gradient(135deg,#102f4b,#17627c 55%,#0f766e);color:#fff;text-align:center;padding:52px 20px 58px}
+    .hero h1{font-size:42px;font-weight:800;margin-bottom:10px;letter-spacing:-.5px}
+    .hero p{font-size:19px;max-width:700px;margin:auto}
+    .search-box{max-width:760px;margin:22px auto 0;display:flex;gap:8px;align-items:stretch}
+    .search-box input{flex:1;padding:13px;border:1px solid #dce2e7;background:#fff;border-radius:7px;font-size:16px;outline:none;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+    .search-box button{padding:13px 20px;border:none;border-radius:7px;background:#d6a84f;color:#102033;font-weight:800;cursor:pointer;min-width:120px;box-shadow:0 5px 18px rgba(0,0,0,.14)}
+    .search-box button:hover{background:#c79838}
+    main{max-width:1240px;margin:auto;padding:30px 15px}
+    section{margin-bottom:45px}
+    .section-title{font-size:27px;font-weight:800;margin-bottom:18px;color:#0b1f33;border-left:5px solid #d6a84f;padding-left:10px}
+    .posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+    .card{background:#fff;border:1px solid #e3e7eb;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(11,31,51,.07);transition:.3s;cursor:pointer}
+    .card:hover{transform:translateY(-4px);box-shadow:0 9px 24px rgba(11,31,51,.13)}
+    .card-image{width:100%;height:190px;object-fit:cover;background:#ddd}
+    .card-content{padding:17px}.card h3{font-size:20px;margin-bottom:8px;color:#222}
+    .category{display:inline-block;background:#0b1f33;color:#fff;padding:4px 9px;border-radius:4px;font-size:12px;margin-bottom:8px}
+    .read-article{display:inline-block;margin-top:10px;text-decoration:none;font-weight:700;color:#0b1f33}
+    .date{color:#777;font-size:13px;margin-top:10px}
+    .empty{background:#fff;padding:25px;text-align:center;border-radius:8px;color:#777}
+    .contact-box{background:#fff;padding:30px 20px;border-radius:10px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.08);border-top:4px solid #d6a84f}
+    .contact-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .contact-buttons a{text-decoration:none;color:#fff;padding:11px 18px;border-radius:6px;font-weight:bold}
+    .whatsapp{background:#25d366}.email{background:#444}.facebook{background:#1877f2}
+    footer{background:#0b1f33!important;color:#fff;text-align:center;padding:25px 15px;margin-top:30px}
+    .admin-link{color:#fff;text-decoration:none;display:inline-block;margin-top:8px;opacity:.9}
+    .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.75);overflow-y:auto;padding:30px 15px}
+    .modal-content{max-width:800px;margin:auto;background:#fff;border-radius:10px;padding:25px;position:relative}
+    .modal-content img{width:100%;max-height:400px;object-fit:cover;border-radius:8px;margin-bottom:20px}
+    .modal-content h2{margin-bottom:10px;color:#075e54}.modal-text{white-space:pre-wrap;font-size:17px;line-height:1.8}
+    .close{position:absolute;right:15px;top:8px;font-size:32px;cursor:pointer;color:#555}
+    .loading{text-align:center;padding:40px;font-size:18px;color:#075e54}
+    .ad-container{width:100%;min-height:90px;margin:20px 0;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;overflow:hidden}
+    .ad-label{color:#888;font-size:12px;text-align:center}.info-page{background:#fff;padding:25px;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+    .info-page h3{color:#075e54;margin-bottom:12px}.info-page p{margin-bottom:14px}
     @media(max-width:700px){
-      header{padding:12px 15px}.header-container{position:relative;min-height:48px}.logo{font-size:24px}.menu-toggle{display:block;margin-left:auto}
+      header{padding:11px 14px}.header-container{position:relative;min-height:48px}.logo{font-size:24px}.menu-toggle{display:block;margin-left:auto}
       nav{display:none;position:absolute;top:58px;left:0;right:0;background:#075e54;padding:12px 10px 15px;border-radius:0 0 14px 14px;box-shadow:0 8px 18px rgba(0,0,0,.18);gap:5px;flex-direction:column;align-items:stretch}
-      nav.open{display:flex}nav a{font-size:16px;padding:11px 14px;border-radius:8px;text-align:left}nav a:hover{background:rgba(255,255,255,.12)}.breaking-inner{min-height:40px;padding:0 10px;font-size:13px}.breaking-label{font-size:12px;padding:4px 8px}.hero{padding:34px 16px 38px}.hero h1{font-size:31px}.hero p{font-size:16px;line-height:1.55}.search-box{display:flex;flex-direction:column;gap:9px;margin-top:20px}.search-box input,.search-box button{width:100%;min-height:50px}.search-box button{font-size:16px}main{padding:24px 12px}section{margin-bottom:32px}.section-title{font-size:23px}.posts{grid-template-columns:1fr;gap:14px}.card-image{height:180px}
+      nav.open{display:flex}nav a{font-size:16px;padding:11px 14px;border-radius:8px;text-align:left}
+      .breaking-inner{min-height:40px;padding:0 10px;font-size:13px}.breaking-label{font-size:12px;padding:4px 8px}
+      .hero{padding:35px 16px 40px}.hero h1{font-size:31px}.hero p{font-size:16px;line-height:1.55}
+      .search-box{display:flex;flex-direction:column;gap:9px;margin-top:20px}.search-box input,.search-box button{width:100%;min-height:50px}.search-box button{font-size:16px}
+      main{padding:24px 12px}section{margin-bottom:32px}.section-title{font-size:23px}.posts{grid-template-columns:1fr;gap:14px}.card-image{height:180px}
     }
-    :root{--navy:#0b1f33;--navy2:#123b5d;--accent:#d6a84f;--bg:#f4f6f8;--text:#17212b;--muted:#66727e}
-    body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:13px 20px;box-shadow:0 3px 14px rgba(0,0,0,.16)}.header-container{max-width:1200px}.logo{font-size:28px;letter-spacing:.2px}nav a{font-size:14px;font-weight:600;border-radius:7px;padding:8px 10px}nav a:hover{background:rgba(214,168,79,.18);color:#fff}.breaking-bar{background:#fff;color:var(--navy);border-bottom:2px solid var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.06)}.breaking-label{background:#b52b2b}.hero{background:linear-gradient(135deg,#102f4b,#17627c 55%,#0f766e);padding:52px 20px 58px}.hero h1{font-size:42px;font-weight:800}.hero p{font-size:19px}.search-box input{border:1px solid #dce2e7;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.14)}.search-box button{background:var(--accent);color:#102033;font-weight:800;box-shadow:0 5px 18px rgba(0,0,0,.14)}.search-box button:hover{background:#c79838}main{max-width:1240px}.section-title{color:var(--navy);border-left-color:var(--accent)}.card{border:1px solid #e3e7eb;border-radius:12px;background:#fff;box-shadow:0 3px 12px rgba(11,31,51,.07)}.card:hover{transform:translateY(-4px);box-shadow:0 9px 24px rgba(11,31,51,.13)}.category{background:var(--navy);color:#fff}.read-article{color:var(--navy)}.contact-box{border-top:4px solid var(--accent)}footer{background:var(--navy)!important;color:#fff}
-    @media(max-width:700px){header{padding:11px 14px}.logo{font-size:24px}.hero{padding:35px 16px 40px}.hero h1{font-size:31px}.hero p{font-size:16px}.search-box button{background:var(--accent);color:#102033}.section-title{font-size:23px}}
-  
-/* Pak Point Professional News Theme */
-:root{--navy:#0b1f33;--navy2:#123b5d;--accent:#d6a84f;--bg:#f4f6f8;--text:#17212b;--muted:#66727e}
-body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:13px 20px;box-shadow:0 3px 14px rgba(0,0,0,.16)}
-.header-container{max-width:1200px}
-.logo{font-size:28px;letter-spacing:.2px}
-nav a{font-size:14px;font-weight:600;border-radius:7px;padding:8px 10px}
-nav a:hover{background:rgba(214,168,79,.18);color:#fff}
-.breaking-bar{background:#fff;color:var(--navy);border-bottom:2px solid var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.breaking-label{background:#b52b2b}
-.hero{background:linear-gradient(135deg,#102f4b,#17627c 55%,#0f766e);padding:52px 20px 58px}
-.hero h1{font-size:42px;font-weight:800}
-.hero p{font-size:19px}
-.search-box input{border:1px solid #dce2e7;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.14)}
-.search-box button{background:var(--accent);color:#102033;font-weight:800;box-shadow:0 5px 18px rgba(0,0,0,.14)}
-.search-box button:hover{background:#c79838}
-main{max-width:1240px}
-.section-title{color:var(--navy);border-left-color:var(--accent)}
-.card{border:1px solid #e3e7eb;border-radius:12px;background:#fff;box-shadow:0 3px 12px rgba(11,31,51,.07)}
-.card:hover{transform:translateY(-4px);box-shadow:0 9px 24px rgba(11,31,51,.13)}
-.category{background:var(--navy);color:#fff}
-.read-article{color:var(--navy)}
-.contact-box{border-top:4px solid var(--accent)}
-footer{background:var(--navy)!important;color:#fff}
-@media(max-width:700px){header{padding:11px 14px}.logo{font-size:24px}.hero{padding:35px 16px 40px}.hero h1{font-size:31px}.hero p{font-size:16px}.search-box button{background:var(--accent);color:#102033}.section-title{font-size:23px}}
-
-</style>
+  </style>
   <!-- Google AdSense: add your real AdSense code here after approval. -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 </head>
 <body>
 <header><div class="header-container"><div class="logo">Pak Point</div><button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button><nav><a href="#home">Home</a><a href="#articles">Articles</a><a href="#stories">Stories</a><a href="#motivation">Motivation</a><a href="#knowledge">Knowledge</a><a href="#contact">Contact</a><a href="#about">About</a><a href="#privacy">Privacy</a><a href="admin.html">Admin</a></nav></div></header>
 <div class="breaking-bar"><div class="breaking-inner"><span class="breaking-label">BREAKING</span><span class="breaking-text">Latest Pakistan &amp; World News — Stay updated with Pak Point</span></div></div>
-<section class="hero" id="home"><h1>Pak Point</h1><p>Latest Pakistan & World News, Articles, Stories, Motivation and Knowledge</p><div class="search-box"><input type="text" id="searchInput" placeholder="Search articles, stories..."><button onclick="searchPosts()">Search</button></div></section>
+<section class="hero" id="home"><h1>Pak Point</h1><p>Latest Pakistan &amp; World News, Articles, Stories, Motivation and Knowledge</p><div class="search-box"><input type="text" id="searchInput" placeholder="Search articles, stories..."><button onclick="searchPosts()">Search</button></div></section>
 <div class="ad-container"><div class="ad-label">Advertisement</div></div>
 <main>
 <section id="articles"><h2 class="section-title">Latest Articles</h2><div id="articlesContainer" class="posts"><div class="loading">Loading articles...</div></div></section>
@@ -176,6 +130,5 @@ document.addEventListener('DOMContentLoaded',function(){const b=document.querySe
   });
 })();
 </script>
-
 </body>
 </html>
