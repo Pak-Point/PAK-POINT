@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   redesign:
-    if: !contains(github.event.head_commit.message, 'Apply professional mobile redesign')
+    if: ${{ !contains(github.event.head_commit.message, 'Apply professional mobile redesign') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,7 +21,6 @@ jobs:
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-
           css = r'''
 
           /* Pak Point professional mobile redesign */
@@ -63,21 +62,16 @@ jobs:
             .card-image{height:180px}
           }
           '''
-
           if 'Pak Point professional mobile redesign' not in s:
               s = s.replace('</style>', css + '\n  </style>', 1)
-
           if 'class="menu-toggle"' not in s:
               s = s.replace('<nav>', '<button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>\n      <nav>', 1)
-
           if 'class="breaking-bar"' not in s:
               ticker = '''\n  <div class="breaking-bar">\n    <div class="breaking-inner">\n      <span class="breaking-label">BREAKING</span>\n      <span class="breaking-text">Latest Pakistan &amp; World News — Stay updated with Pak Point</span>\n    </div>\n  </div>\n'''
               s = s.replace('</header>', '</header>' + ticker, 1)
-
           if 'Pak Point mobile menu script' not in s:
               js = '''\n<script>\n/* Pak Point mobile menu script */\ndocument.addEventListener('DOMContentLoaded',function(){\n  const b=document.querySelector('.menu-toggle');\n  const n=document.querySelector('nav');\n  if(!b||!n)return;\n  b.addEventListener('click',function(){\n    const open=n.classList.toggle('open');\n    b.setAttribute('aria-expanded',open?'true':'false');\n    b.textContent=open?'✕':'☰';\n  });\n  n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='☰';}));\n});\n</script>\n'''
               s = s.replace('</body>', js + '\n</body>', 1)
-
           p.write_text(s, encoding='utf-8')
           PY
 
