@@ -1,0 +1,51 @@
+name: Apply Facebook link fix
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-facebook.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Facebook Android browser escape
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '</body>'
+          snippet = r'''<script>
+          (function () {
+            var ua = navigator.userAgent || '';
+            var isFacebook = /FBAN|FBAV|FB_IAB/i.test(ua);
+            var isAndroid = /Android/i.test(ua);
+            if (!isFacebook || !isAndroid) return;
+            var box = document.createElement('div');
+            box.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;background:#075e54;color:#fff;padding:12px 14px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.3);font-family:Arial,sans-serif;text-align:center;';
+            box.innerHTML = '<div style="font-size:14px;margin-bottom:8px">Facebook browser mein link issue ho to website Chrome mein kholen.</div><a id="pp-open-browser" href="#" style="display:inline-block;background:#fff;color:#075e54;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700">Open in Chrome</a>';
+            document.body.appendChild(box);
+            document.getElementById('pp-open-browser').addEventListener('click', function (e) {
+              e.preventDefault();
+              var u = location.href.replace(/^https?:\\/\\//i, '');
+              location.href = 'intent://' + u + '#Intent;scheme=https;end';
+            });
+          })();
+          </script>
+          '''
+          if 'pp-open-browser' not in s:
+              s = s.replace(marker, snippet + '\n' + marker, 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit website fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Fix Facebook Android link opening'
+          git push
