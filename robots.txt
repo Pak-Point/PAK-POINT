@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pak-point.github.io/pak-point/sitemap.xml
+Sitemap: https://nk7741595-ux.github.io/PAK-POINT/sitemap.xml
