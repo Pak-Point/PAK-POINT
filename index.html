@@ -344,7 +344,48 @@
     .ad-label{color:#888;font-size:12px;text-align:center}
     .info-page{background:#fff;padding:25px;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
     .info-page h3{color:#075e54;margin-bottom:12px}.info-page p{margin-bottom:14px}
-</style>
+
+
+/* Pak Point professional mobile redesign */
+.menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:9px;font-size:25px;line-height:1;padding:7px 11px;cursor:pointer}
+.breaking-bar{background:#fff;color:#075e54;border-bottom:1px solid #e7ecef;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
+.breaking-inner{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;min-height:42px;padding:0 15px;font-size:14px;font-weight:600}
+.breaking-label{background:#075e54;color:#fff;padding:5px 10px;border-radius:6px;white-space:nowrap}
+.breaking-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero{padding:42px 20px 48px}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.5px}
+.search-box{max-width:760px;margin:22px auto 0;align-items:stretch}
+.search-box input{box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.search-box button{background:#075e54;font-weight:700;min-width:120px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.search-box button:hover{background:#064d46}
+.card{border:1px solid #edf0f2;border-radius:14px}
+.section-title{font-weight:800}
+
+@media(max-width:700px){
+  header{padding:12px 15px}
+  .header-container{position:relative;min-height:48px}
+  .logo{font-size:24px}
+  .menu-toggle{display:block;margin-left:auto}
+  nav{display:none;position:absolute;top:58px;left:0;right:0;background:#075e54;padding:12px 10px 15px;border-radius:0 0 14px 14px;box-shadow:0 8px 18px rgba(0,0,0,.18);gap:5px;flex-direction:column;align-items:stretch}
+  nav.open{display:flex}
+  nav a{font-size:16px;padding:11px 14px;border-radius:8px;text-align:left}
+  nav a:hover{background:rgba(255,255,255,.12)}
+  .breaking-inner{min-height:40px;padding:0 10px;font-size:13px}
+  .breaking-label{font-size:12px;padding:4px 8px}
+  .hero{padding:34px 16px 38px}
+  .hero h1{font-size:31px}
+  .hero p{font-size:16px;line-height:1.55}
+  .search-box{display:flex;flex-direction:column;gap:9px;margin-top:20px}
+  .search-box input,.search-box button{width:100%;min-height:50px}
+  .search-box button{font-size:16px}
+  main{padding:24px 12px}
+  section{margin-bottom:32px}
+  .section-title{font-size:23px}
+  .posts{grid-template-columns:1fr;gap:14px}
+  .card-image{height:180px}
+}
+
+  </style>
   <!-- Google AdSense: add your real AdSense code here after approval. -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 
@@ -359,7 +400,8 @@
       Pak Point
     </div>
 
-    <nav>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav>
       <a href="#home">Home</a>
       <a href="#articles">Articles</a>
       <a href="#stories">Stories</a>
@@ -373,6 +415,13 @@
 
   </div>
 </header>
+  <div class="breaking-bar">
+    <div class="breaking-inner">
+      <span class="breaking-label">BREAKING</span>
+      <span class="breaking-text">Latest Pakistan &amp; World News — Stay updated with Pak Point</span>
+    </div>
+  </div>
+
 
 
 <section class="hero" id="home">
@@ -1200,6 +1249,22 @@
 
   loadPosts();
 
+</script>
+
+
+<script>
+/* Pak Point mobile menu script */
+document.addEventListener('DOMContentLoaded',function(){
+  const b=document.querySelector('.menu-toggle');
+  const n=document.querySelector('nav');
+  if(!b||!n)return;
+  b.addEventListener('click',function(){
+    const open=n.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    b.textContent=open?'✕':'☰';
+  });
+  n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='☰';}));
+});
 </script>
 
 </body>
