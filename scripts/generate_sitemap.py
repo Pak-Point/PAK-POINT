@@ -6,7 +6,7 @@ from xml.etree.ElementTree import Element, SubElement, ElementTree
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-SITE = "https://nk7741595-ux.github.io/PAK-POINT/"
+SITE = "https://pak-point.github.io/pak-point/"
 
 service_account = os.environ.get("FIREBASE_SERVICE_ACCOUNT")
 if not service_account:
